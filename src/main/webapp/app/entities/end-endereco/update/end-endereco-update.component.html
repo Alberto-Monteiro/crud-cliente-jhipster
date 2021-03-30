@@ -1,0 +1,247 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="cc-end-endereco-heading"
+        data-cy="EndEnderecoCreateUpdateHeading"
+        ccTranslate="crudclienteApp.endEndereco.home.createOrEditLabel"
+      >
+        Create or edit a End Endereco
+      </h2>
+
+      <div>
+        <cc-alert-error></cc-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" ccTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" ccTranslate="crudclienteApp.endEndereco.nomeParaOEndereco" for="field_nomeParaOEndereco"
+            >Nome Para O Endereco</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomeParaOEndereco"
+            id="field_nomeParaOEndereco"
+            data-cy="nomeParaOEndereco"
+            formControlName="nomeParaOEndereco"
+          />
+          <div
+            *ngIf="
+              editForm.get('nomeParaOEndereco')!.invalid &&
+              (editForm.get('nomeParaOEndereco')!.dirty || editForm.get('nomeParaOEndereco')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomeParaOEndereco')?.errors?.required"
+              ccTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomeParaOEndereco')?.errors?.maxlength"
+              ccTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" ccTranslate="crudclienteApp.endEndereco.cep" for="field_cep">Cep</label>
+          <input type="text" class="form-control" name="cep" id="field_cep" data-cy="cep" formControlName="cep" />
+          <div *ngIf="editForm.get('cep')!.invalid && (editForm.get('cep')!.dirty || editForm.get('cep')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('cep')?.errors?.required" ccTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cep')?.errors?.minlength"
+              ccTranslate="entity.validation.minlength"
+              [translateValues]="{ min: 8 }"
+            >
+              This field is required to be at least 8 characters.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cep')?.errors?.maxlength"
+              ccTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 8 }"
+            >
+              This field cannot be longer than 8 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" ccTranslate="crudclienteApp.endEndereco.cidade" for="field_cidade">Cidade</label>
+          <input type="text" class="form-control" name="cidade" id="field_cidade" data-cy="cidade" formControlName="cidade" />
+          <div *ngIf="editForm.get('cidade')!.invalid && (editForm.get('cidade')!.dirty || editForm.get('cidade')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('cidade')?.errors?.required" ccTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cidade')?.errors?.maxlength"
+              ccTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" ccTranslate="crudclienteApp.endEndereco.bairro" for="field_bairro">Bairro</label>
+          <input type="text" class="form-control" name="bairro" id="field_bairro" data-cy="bairro" formControlName="bairro" />
+          <div *ngIf="editForm.get('bairro')!.invalid && (editForm.get('bairro')!.dirty || editForm.get('bairro')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bairro')?.errors?.maxlength"
+              ccTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" ccTranslate="crudclienteApp.endEndereco.logradouro" for="field_logradouro">Logradouro</label>
+          <input
+            type="text"
+            class="form-control"
+            name="logradouro"
+            id="field_logradouro"
+            data-cy="logradouro"
+            formControlName="logradouro"
+          />
+          <div *ngIf="editForm.get('logradouro')!.invalid && (editForm.get('logradouro')!.dirty || editForm.get('logradouro')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('logradouro')?.errors?.required"
+              ccTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('logradouro')?.errors?.maxlength"
+              ccTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 256 }"
+            >
+              This field cannot be longer than 256 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" ccTranslate="crudclienteApp.endEndereco.numero" for="field_numero">Numero</label>
+          <input type="text" class="form-control" name="numero" id="field_numero" data-cy="numero" formControlName="numero" />
+          <div *ngIf="editForm.get('numero')!.invalid && (editForm.get('numero')!.dirty || editForm.get('numero')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('numero')?.errors?.maxlength"
+              ccTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 30 }"
+            >
+              This field cannot be longer than 30 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" ccTranslate="crudclienteApp.endEndereco.complemento" for="field_complemento">Complemento</label>
+          <input
+            type="text"
+            class="form-control"
+            name="complemento"
+            id="field_complemento"
+            data-cy="complemento"
+            formControlName="complemento"
+          />
+          <div *ngIf="editForm.get('complemento')!.invalid && (editForm.get('complemento')!.dirty || editForm.get('complemento')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('complemento')?.errors?.maxlength"
+              ccTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" ccTranslate="crudclienteApp.endEndereco.referencia" for="field_referencia">Referencia</label>
+          <input
+            type="text"
+            class="form-control"
+            name="referencia"
+            id="field_referencia"
+            data-cy="referencia"
+            formControlName="referencia"
+          />
+          <div *ngIf="editForm.get('referencia')!.invalid && (editForm.get('referencia')!.dirty || editForm.get('referencia')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('referencia')?.errors?.maxlength"
+              ccTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" ccTranslate="crudclienteApp.endEndereco.estado" for="field_estado">Estado</label>
+          <select class="form-control" id="field_estado" data-cy="estado" name="estado" formControlName="estado">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="endEstadoOption.id === editForm.get('estado')!.value?.id ? editForm.get('estado')!.value : endEstadoOption"
+              *ngFor="let endEstadoOption of endEstadosSharedCollection; trackBy: trackEndEstadoById"
+            >
+              {{ endEstadoOption.uf }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" ccTranslate="crudclienteApp.endEndereco.cliente" for="field_cliente">Cliente</label>
+          <select class="form-control" id="field_cliente" data-cy="cliente" name="cliente" formControlName="cliente">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="clienteOption.id === editForm.get('cliente')!.value?.id ? editForm.get('cliente')!.value : clienteOption"
+              *ngFor="let clienteOption of clientesSharedCollection; trackBy: trackClienteById"
+            >
+              {{ clienteOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ccTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ccTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

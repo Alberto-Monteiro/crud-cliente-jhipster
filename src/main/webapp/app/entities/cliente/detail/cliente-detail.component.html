@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cliente">
+      <h2 data-cy="clienteDetailsHeading"><span ccTranslate="crudclienteApp.cliente.detail.title">Cliente</span></h2>
+
+      <hr />
+
+      <cc-alert-error></cc-alert-error>
+
+      <cc-alert></cc-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ccTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ cliente.id }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.cliente.cpf">Cpf</span></dt>
+        <dd>
+          <span>{{ cliente.cpf }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.cliente.nome">Nome</span></dt>
+        <dd>
+          <span>{{ cliente.nome }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.cliente.sobrenome">Sobrenome</span></dt>
+        <dd>
+          <span>{{ cliente.sobrenome }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.cliente.dataNascimento">Data Nascimento</span></dt>
+        <dd>
+          <span>{{ cliente.dataNascimento | formatMediumDate }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.cliente.telefone">Telefone</span></dt>
+        <dd>
+          <span>{{ cliente.telefone }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.cliente.email">Email</span></dt>
+        <dd>
+          <span>{{ cliente.email }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.cliente.sexo">Sexo</span></dt>
+        <dd>
+          <span ccTranslate="{{ 'crudclienteApp.Sexo.' + cliente.sexo }}">{{ cliente.sexo }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ccTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cliente', cliente.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ccTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

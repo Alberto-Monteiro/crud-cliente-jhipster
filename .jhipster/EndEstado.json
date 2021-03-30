@@ -1,0 +1,35 @@
+{
+  "name": "EndEstado",
+  "fields": [
+    {
+      "fieldName": "uf",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "2"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "20"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "endEndereco",
+      "otherEntityRelationshipName": "estado",
+      "relationshipName": "endereco"
+    }
+  ],
+  "entityTableName": "end_estado",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["crudcliente"],
+  "changelogDate": "20210330175639"
+}

@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="endEndereco">
+      <h2 data-cy="endEnderecoDetailsHeading"><span ccTranslate="crudclienteApp.endEndereco.detail.title">End Endereco</span></h2>
+
+      <hr />
+
+      <cc-alert-error></cc-alert-error>
+
+      <cc-alert></cc-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ccTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ endEndereco.id }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.endEndereco.nomeParaOEndereco">Nome Para O Endereco</span></dt>
+        <dd>
+          <span>{{ endEndereco.nomeParaOEndereco }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.endEndereco.cep">Cep</span></dt>
+        <dd>
+          <span>{{ endEndereco.cep }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.endEndereco.cidade">Cidade</span></dt>
+        <dd>
+          <span>{{ endEndereco.cidade }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.endEndereco.bairro">Bairro</span></dt>
+        <dd>
+          <span>{{ endEndereco.bairro }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.endEndereco.logradouro">Logradouro</span></dt>
+        <dd>
+          <span>{{ endEndereco.logradouro }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.endEndereco.numero">Numero</span></dt>
+        <dd>
+          <span>{{ endEndereco.numero }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.endEndereco.complemento">Complemento</span></dt>
+        <dd>
+          <span>{{ endEndereco.complemento }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.endEndereco.referencia">Referencia</span></dt>
+        <dd>
+          <span>{{ endEndereco.referencia }}</span>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.endEndereco.estado">Estado</span></dt>
+        <dd>
+          <div *ngIf="endEndereco.estado">
+            <a [routerLink]="['/end-estado', endEndereco.estado?.id, 'view']">{{ endEndereco.estado?.uf }}</a>
+          </div>
+        </dd>
+        <dt><span ccTranslate="crudclienteApp.endEndereco.cliente">Cliente</span></dt>
+        <dd>
+          <div *ngIf="endEndereco.cliente">
+            <a [routerLink]="['/cliente', endEndereco.cliente?.id, 'view']">{{ endEndereco.cliente?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ccTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/end-endereco', endEndereco.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ccTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

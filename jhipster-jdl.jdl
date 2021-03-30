@@ -1,0 +1,58 @@
+application {
+  config {
+    baseName crudcliente
+    packageName br.com.rocksti.crudcliente
+    jhiPrefix cc
+    nativeLanguage pt-br
+    languages [pt-br, en]
+    testFrameworks [protractor, cucumber, gatling]
+    cacheProvider redis
+    applicationType monolith
+    authenticationType jwt
+    prodDatabaseType postgresql
+  }
+  entities all
+  dto all with mapstruct
+  service all with serviceClass
+  paginate all with pagination
+}
+
+enum Sexo {
+	MASCULINO (M),
+    FEMININO (F)
+}
+
+entity Cliente {
+	cpf String minlength(11) maxlength(11) required unique
+	nome String maxlength(30) required
+	sobrenome String maxlength(60) required
+	dataNascimento LocalDate required
+    telefone String maxlength(20) required
+    email String maxlength(100) required
+    sexo Sexo required
+}
+
+entity EndEndereco {
+	nomeParaOEndereco String maxlength(100) required
+	cep String minlength(8) maxlength(8) required
+    cidade String maxlength(100) required
+    bairro String maxlength(100)
+    logradouro String maxlength(256) required
+    numero String maxlength(30)
+    complemento String maxlength(100)
+    referencia String maxlength(100)
+}
+
+entity EndEstado {
+	uf String maxlength(2) required
+    descricao String maxlength(20) required
+}
+
+relationship OneToMany {
+	Cliente{endereco(nomeParaOEndereco)} to EndEndereco{cliente}
+}
+
+relationship ManyToOne {
+	EndEndereco{estado(uf)} to EndEstado{endereco}
+}
+

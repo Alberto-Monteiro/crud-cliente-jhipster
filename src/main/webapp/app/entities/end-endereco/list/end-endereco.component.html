@@ -1,0 +1,140 @@
+<div>
+  <h2 id="page-heading" data-cy="EndEnderecoHeading">
+    <span ccTranslate="crudclienteApp.endEndereco.home.title">End Enderecos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ccTranslate="crudclienteApp.endEndereco.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-end-endereco"
+        [routerLink]="['/end-endereco/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ccTranslate="crudclienteApp.endEndereco.home.createLabel"> Create a new End Endereco </span>
+      </button>
+    </div>
+  </h2>
+
+  <cc-alert-error></cc-alert-error>
+
+  <cc-alert></cc-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="endEnderecos?.length === 0">
+    <span ccTranslate="crudclienteApp.endEndereco.home.notFound">No endEnderecos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="endEnderecos && endEnderecos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr ccSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" ccSortBy="id"><span ccTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" ccSortBy="nomeParaOEndereco">
+            <span ccTranslate="crudclienteApp.endEndereco.nomeParaOEndereco">Nome Para O Endereco</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" ccSortBy="cep"><span ccTranslate="crudclienteApp.endEndereco.cep">Cep</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" ccSortBy="cidade">
+            <span ccTranslate="crudclienteApp.endEndereco.cidade">Cidade</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" ccSortBy="bairro">
+            <span ccTranslate="crudclienteApp.endEndereco.bairro">Bairro</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" ccSortBy="logradouro">
+            <span ccTranslate="crudclienteApp.endEndereco.logradouro">Logradouro</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" ccSortBy="numero">
+            <span ccTranslate="crudclienteApp.endEndereco.numero">Numero</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" ccSortBy="complemento">
+            <span ccTranslate="crudclienteApp.endEndereco.complemento">Complemento</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" ccSortBy="referencia">
+            <span ccTranslate="crudclienteApp.endEndereco.referencia">Referencia</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" ccSortBy="estado.uf">
+            <span ccTranslate="crudclienteApp.endEndereco.estado">Estado</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" ccSortBy="cliente.id">
+            <span ccTranslate="crudclienteApp.endEndereco.cliente">Cliente</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let endEndereco of endEnderecos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/end-endereco', endEndereco.id, 'view']">{{ endEndereco.id }}</a>
+          </td>
+          <td>{{ endEndereco.nomeParaOEndereco }}</td>
+          <td>{{ endEndereco.cep }}</td>
+          <td>{{ endEndereco.cidade }}</td>
+          <td>{{ endEndereco.bairro }}</td>
+          <td>{{ endEndereco.logradouro }}</td>
+          <td>{{ endEndereco.numero }}</td>
+          <td>{{ endEndereco.complemento }}</td>
+          <td>{{ endEndereco.referencia }}</td>
+          <td>
+            <div *ngIf="endEndereco.estado">
+              <a [routerLink]="['/end-estado', endEndereco.estado?.id, 'view']">{{ endEndereco.estado?.uf }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="endEndereco.cliente">
+              <a [routerLink]="['/cliente', endEndereco.cliente?.id, 'view']">{{ endEndereco.cliente?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/end-endereco', endEndereco.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ccTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/end-endereco', endEndereco.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ccTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(endEndereco)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ccTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="endEnderecos && endEnderecos.length > 0">
+    <div class="row justify-content-center">
+      <cc-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></cc-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

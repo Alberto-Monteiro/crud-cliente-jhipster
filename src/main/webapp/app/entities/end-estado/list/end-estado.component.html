@@ -1,0 +1,100 @@
+<div>
+  <h2 id="page-heading" data-cy="EndEstadoHeading">
+    <span ccTranslate="crudclienteApp.endEstado.home.title">End Estados</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ccTranslate="crudclienteApp.endEstado.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-end-estado"
+        [routerLink]="['/end-estado/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ccTranslate="crudclienteApp.endEstado.home.createLabel"> Create a new End Estado </span>
+      </button>
+    </div>
+  </h2>
+
+  <cc-alert-error></cc-alert-error>
+
+  <cc-alert></cc-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="endEstados?.length === 0">
+    <span ccTranslate="crudclienteApp.endEstado.home.notFound">No endEstados found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="endEstados && endEstados.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr ccSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" ccSortBy="id"><span ccTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" ccSortBy="uf"><span ccTranslate="crudclienteApp.endEstado.uf">Uf</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" ccSortBy="descricao">
+            <span ccTranslate="crudclienteApp.endEstado.descricao">Descricao</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let endEstado of endEstados; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/end-estado', endEstado.id, 'view']">{{ endEstado.id }}</a>
+          </td>
+          <td>{{ endEstado.uf }}</td>
+          <td>{{ endEstado.descricao }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/end-estado', endEstado.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ccTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/end-estado', endEstado.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ccTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(endEstado)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ccTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="endEstados && endEstados.length > 0">
+    <div class="row justify-content-center">
+      <cc-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></cc-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

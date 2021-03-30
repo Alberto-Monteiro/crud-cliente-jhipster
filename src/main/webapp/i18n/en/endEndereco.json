@@ -1,0 +1,33 @@
+{
+  "crudclienteApp": {
+    "endEndereco": {
+      "home": {
+        "title": "End Enderecos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new End Endereco",
+        "createOrEditLabel": "Create or edit a End Endereco",
+        "notFound": "No End Enderecos found"
+      },
+      "created": "A new End Endereco is created with identifier {{ param }}",
+      "updated": "A End Endereco is updated with identifier {{ param }}",
+      "deleted": "A End Endereco is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete End Endereco {{ id }}?"
+      },
+      "detail": {
+        "title": "End Endereco"
+      },
+      "id": "ID",
+      "nomeParaOEndereco": "Nome Para O Endereco",
+      "cep": "Cep",
+      "cidade": "Cidade",
+      "bairro": "Bairro",
+      "logradouro": "Logradouro",
+      "numero": "Numero",
+      "complemento": "Complemento",
+      "referencia": "Referencia",
+      "estado": "Estado",
+      "cliente": "Cliente"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "crudclienteApp": {
+    "endEstado": {
+      "home": {
+        "title": "End Estados",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new End Estado",
+        "createOrEditLabel": "Create or edit a End Estado",
+        "notFound": "No End Estados found"
+      },
+      "created": "A new End Estado is created with identifier {{ param }}",
+      "updated": "A End Estado is updated with identifier {{ param }}",
+      "deleted": "A End Estado is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete End Estado {{ id }}?"
+      },
+      "detail": {
+        "title": "End Estado"
+      },
+      "id": "ID",
+      "uf": "Uf",
+      "descricao": "Descricao",
+      "endereco": "Endereco"
+    }
+  }
+}
