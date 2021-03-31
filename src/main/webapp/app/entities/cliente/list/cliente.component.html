@@ -75,12 +75,12 @@
           <td>
             <a [routerLink]="['/cliente', cliente.id, 'view']">{{ cliente.id }}</a>
           </td>
-          <td>{{ cliente.cpf }}</td>
+          <td>{{ cliente.cpf | mask: '000.000.000-99' }}</td>
           <td>{{ cliente.nome }}</td>
           <td>{{ cliente.sobrenome }}</td>
           <td>{{ cliente.dataNascimento | formatMediumDate }}</td>
           <td>{{ cliente.idade }}</td>
-          <td>{{ cliente.telefone }}</td>
+          <td>{{ cliente.telefone | mask: '(00) 00000-0000' }}</td>
           <td>{{ cliente.email }}</td>
           <td ccTranslate="{{ 'crudclienteApp.Sexo.' + cliente.sexo }}">{{ cliente.sexo }}</td>
           <td class="text-right">
