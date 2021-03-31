@@ -32,22 +32,41 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr ccSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-          <th scope="col" ccSortBy="id"><span ccTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" ccSortBy="cpf"><span ccTranslate="crudclienteApp.cliente.cpf">Cpf</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" ccSortBy="nome"><span ccTranslate="crudclienteApp.cliente.nome">Nome</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" ccSortBy="id">
+            <span ccTranslate="global.field.id">ID</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" ccSortBy="cpf">
+            <span ccTranslate="crudclienteApp.cliente.cpf">Cpf</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" ccSortBy="nome">
+            <span ccTranslate="crudclienteApp.cliente.nome">Nome</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
           <th scope="col" ccSortBy="sobrenome">
-            <span ccTranslate="crudclienteApp.cliente.sobrenome">Sobrenome</span> <fa-icon icon="sort"></fa-icon>
+            <span ccTranslate="crudclienteApp.cliente.sobrenome">Sobrenome</span>
+            <fa-icon icon="sort"></fa-icon>
           </th>
           <th scope="col" ccSortBy="dataNascimento">
-            <span ccTranslate="crudclienteApp.cliente.dataNascimento">Data Nascimento</span> <fa-icon icon="sort"></fa-icon>
+            <span ccTranslate="crudclienteApp.cliente.dataNascimento">Data Nascimento</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col">
+            <span ccTranslate="crudclienteApp.cliente.idade">Idade</span>
           </th>
           <th scope="col" ccSortBy="telefone">
-            <span ccTranslate="crudclienteApp.cliente.telefone">Telefone</span> <fa-icon icon="sort"></fa-icon>
+            <span ccTranslate="crudclienteApp.cliente.telefone">Telefone</span>
+            <fa-icon icon="sort"></fa-icon>
           </th>
           <th scope="col" ccSortBy="email">
-            <span ccTranslate="crudclienteApp.cliente.email">Email</span> <fa-icon icon="sort"></fa-icon>
+            <span ccTranslate="crudclienteApp.cliente.email">Email</span>
+            <fa-icon icon="sort"></fa-icon>
           </th>
-          <th scope="col" ccSortBy="sexo"><span ccTranslate="crudclienteApp.cliente.sexo">Sexo</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" ccSortBy="sexo">
+            <span ccTranslate="crudclienteApp.cliente.sexo">Sexo</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -60,6 +79,7 @@
           <td>{{ cliente.nome }}</td>
           <td>{{ cliente.sobrenome }}</td>
           <td>{{ cliente.dataNascimento | formatMediumDate }}</td>
+          <td>{{ cliente.idade }}</td>
           <td>{{ cliente.telefone }}</td>
           <td>{{ cliente.email }}</td>
           <td ccTranslate="{{ 'crudclienteApp.Sexo.' + cliente.sexo }}">{{ cliente.sexo }}</td>

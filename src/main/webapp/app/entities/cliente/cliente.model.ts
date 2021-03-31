@@ -11,6 +11,7 @@ export interface ICliente {
   telefone?: string | any;
   email?: string;
   sexo?: Sexo;
+  idade?: number;
   enderecos?: IEndEndereco[] | null;
 }
 
@@ -24,6 +25,7 @@ export class Cliente implements ICliente {
     public telefone?: string | any,
     public email?: string,
     public sexo?: Sexo,
+    public idade?: number,
     public enderecos?: IEndEndereco[] | null
   ) {}
 }

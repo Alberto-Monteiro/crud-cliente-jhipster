@@ -4,7 +4,8 @@ import br.com.rocksti.crudcliente.domain.enumeration.Sexo;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * A DTO for the {@link br.com.rocksti.crudcliente.domain.Cliente} entity.
@@ -38,6 +39,8 @@ public class ClienteDTO implements Serializable {
 
     @NotNull
     private Sexo sexo;
+
+    private Integer idade;
 
     public Long getId() {
         return id;
@@ -103,6 +106,14 @@ public class ClienteDTO implements Serializable {
         this.sexo = sexo;
     }
 
+    public Integer getIdade() {
+        return idade;
+    }
+
+    public void setIdade(Integer idade) {
+        this.idade = idade;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -136,6 +147,7 @@ public class ClienteDTO implements Serializable {
             ", telefone='" + getTelefone() + "'" +
             ", email='" + getEmail() + "'" +
             ", sexo='" + getSexo() + "'" +
+            ", idade=" + getIdade() +
             "}";
     }
 }

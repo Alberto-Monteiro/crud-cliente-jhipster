@@ -22,6 +22,7 @@
       "nome": "Nome",
       "sobrenome": "Sobrenome",
       "dataNascimento": "Data Nascimento",
+      "idade": "Idade",
       "telefone": "Telefone",
       "email": "Email",
       "sexo": "Sexo",
