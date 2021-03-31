@@ -2,8 +2,8 @@
   "crudclienteApp": {
     "Sexo": {
       "null": "",
-      "MASCULINO": "M",
-      "FEMININO": "F"
+      "MASCULINO": "Masulino",
+      "FEMININO": "Feminino"
     }
   }
 }

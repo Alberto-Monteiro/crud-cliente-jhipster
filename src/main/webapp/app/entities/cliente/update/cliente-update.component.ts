@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
-import { ICliente, Cliente } from '../cliente.model';
+import { Cliente, ICliente } from '../cliente.model';
 import { ClienteService } from '../service/cliente.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class ClienteUpdateComponent implements OnInit {
     sobrenome: [null, [Validators.required, Validators.maxLength(60)]],
     dataNascimento: [null, [Validators.required]],
     telefone: [null, [Validators.required, Validators.maxLength(20)]],
-    email: [null, [Validators.required, Validators.maxLength(100)]],
+    email: [null, [Validators.email, Validators.required, Validators.maxLength(100)]],
     sexo: [null, [Validators.required]],
   });
 
