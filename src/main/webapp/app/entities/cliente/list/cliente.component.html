@@ -28,6 +28,82 @@
     <span ccTranslate="crudclienteApp.cliente.home.notFound">No clientes found</span>
   </div>
 
+  <div class="d-flex">
+    <div class="form-group mx-1">
+      <label class="form-control-label" ccTranslate="crudclienteApp.cliente.cpf" for="field_cpf">Cpf</label>
+      <input
+        [(ngModel)]="filtroPesquisa.cpf"
+        type="text"
+        class="form-control"
+        name="cpf"
+        id="field_cpf"
+        data-cy="cpf"
+        mask="000.000.000-99"
+      />
+    </div>
+    <div class="form-group mx-1">
+      <label class="form-control-label" ccTranslate="crudclienteApp.cliente.nome" for="field_nome">Nome</label>
+      <input [(ngModel)]="filtroPesquisa.nome" type="text" class="form-control" name="nome" id="field_nome" data-cy="nome" />
+    </div>
+    <div class="form-group mx-1">
+      <label class="form-control-label" ccTranslate="crudclienteApp.cliente.sobrenome" for="field_sobrenome">Sobrenome</label>
+      <input
+        [(ngModel)]="filtroPesquisa.sobrenome"
+        type="text"
+        class="form-control"
+        name="sobrenome"
+        id="field_sobrenome"
+        data-cy="sobrenome"
+      />
+    </div>
+    <div class="form-group mx-1">
+      <label class="form-control-label" ccTranslate="crudclienteApp.cliente.dataNascimento" for="field_dataNascimento"
+        >Data Nascimento</label
+      >
+      <div class="input-group">
+        <input
+          [(ngModel)]="filtroPesquisa.dataNascimento"
+          id="field_dataNascimento"
+          data-cy="dataNascimento"
+          type="text"
+          class="form-control"
+          name="dataNascimento"
+          ngbDatepicker
+          #dataNascimentoDp="ngbDatepicker"
+        />
+        <span class="input-group-append">
+          <button type="button" class="btn btn-secondary" (click)="dataNascimentoDp.toggle()">
+            <fa-icon icon="calendar-alt"></fa-icon>
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="form-group mx-1">
+      <label class="form-control-label" ccTranslate="crudclienteApp.cliente.telefone" for="field_telefone">Telefone</label>
+      <input
+        [(ngModel)]="filtroPesquisa.telefone"
+        type="text"
+        class="form-control"
+        name="telefone"
+        id="field_telefone"
+        data-cy="telefone"
+        mask="(00) 00000-0000"
+      />
+    </div>
+    <div class="form-group mx-1">
+      <label class="form-control-label" ccTranslate="crudclienteApp.cliente.email" for="field_email">Email</label>
+      <input [(ngModel)]="filtroPesquisa.email" type="text" class="form-control" name="email" id="field_email" data-cy="email" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label" ccTranslate="crudclienteApp.cliente.sexo" for="field_sexo">Sexo</label>
+      <select [(ngModel)]="filtroPesquisa.sexo" class="form-control" name="sexo" id="field_sexo" data-cy="sexo">
+        <option [ngValue]="null">{{ 'crudclienteApp.Sexo.null' | translate }}</option>
+        <option value="MASCULINO">{{ 'crudclienteApp.Sexo.MASCULINO' | translate }}</option>
+        <option value="FEMININO">{{ 'crudclienteApp.Sexo.FEMININO' | translate }}</option>
+      </select>
+    </div>
+  </div>
+
   <div class="table-responsive" id="entities" *ngIf="clientes && clientes.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>

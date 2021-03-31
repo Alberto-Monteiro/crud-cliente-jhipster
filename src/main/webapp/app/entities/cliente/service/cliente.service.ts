@@ -8,7 +8,7 @@ import { isPresent } from 'app/core/util/operators';
 import { DATE_FORMAT } from 'app/config/input.constants';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
-import { ICliente, getClienteIdentifier } from '../cliente.model';
+import { getClienteIdentifier, ICliente } from '../cliente.model';
 
 export type EntityResponseType = HttpResponse<ICliente>;
 export type EntityArrayResponseType = HttpResponse<ICliente[]>;
@@ -50,6 +50,14 @@ export class ClienteService {
     const options = createRequestOption(req);
     return this.http
       .get<ICliente[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
+  queryComFiltro(req: any, filtroPesquisa: ICliente): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    const copy = this.convertDateFromClient(filtroPesquisa);
+    return this.http
+      .post<ICliente[]>(`${this.resourceUrl}/filtro`, copy, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 

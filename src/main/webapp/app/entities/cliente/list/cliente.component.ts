@@ -24,6 +24,8 @@ export class ClienteComponent implements OnInit {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  filtroPesquisa: ICliente = {};
+
   constructor(
     protected clienteService: ClienteService,
     protected activatedRoute: ActivatedRoute,
@@ -36,11 +38,14 @@ export class ClienteComponent implements OnInit {
     const pageToLoad: number = page ?? this.page ?? 1;
 
     this.clienteService
-      .query({
-        page: pageToLoad - 1,
-        size: this.itemsPerPage,
-        sort: this.sort(),
-      })
+      .queryComFiltro(
+        {
+          page: pageToLoad - 1,
+          size: this.itemsPerPage,
+          sort: this.sort(),
+        },
+        this.filtroPesquisa
+      )
       .subscribe(
         (res: HttpResponse<ICliente[]>) => {
           this.isLoading = false;

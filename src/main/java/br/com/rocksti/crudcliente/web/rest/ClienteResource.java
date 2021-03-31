@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -71,7 +70,7 @@ public class ClienteResource {
     /**
      * {@code PUT  /clientes/:id} : Updates an existing cliente.
      *
-     * @param id the id of the clienteDTO to save.
+     * @param id         the id of the clienteDTO to save.
      * @param clienteDTO the clienteDTO to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated clienteDTO,
      * or with status {@code 400 (Bad Request)} if the clienteDTO is not valid,
@@ -105,7 +104,7 @@ public class ClienteResource {
     /**
      * {@code PATCH  /clientes/:id} : Partial updates given fields of an existing cliente, field will ignore if it is null
      *
-     * @param id the id of the clienteDTO to save.
+     * @param id         the id of the clienteDTO to save.
      * @param clienteDTO the clienteDTO to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated clienteDTO,
      * or with status {@code 400 (Bad Request)} if the clienteDTO is not valid,
@@ -179,5 +178,20 @@ public class ClienteResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    /**
+     * {@code POST  /clientes} : get all the clientes with filter.
+     *
+     * @param pageable the pagination information.
+     * @param filtro   the filter
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of clientes in body.
+     */
+    @PostMapping("/clientes/filtro")
+    public ResponseEntity<List<ClienteDTO>> getAllClientesWithFilter(Pageable pageable, @RequestBody ClienteDTO filtro) {
+        log.debug("REST request to get a page with filter of Clientes");
+        Page<ClienteDTO> page = clienteService.findAllWithFilter(pageable, filtro);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 }

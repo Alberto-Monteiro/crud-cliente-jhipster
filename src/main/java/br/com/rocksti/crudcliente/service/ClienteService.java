@@ -7,6 +7,8 @@ import br.com.rocksti.crudcliente.service.mapper.ClienteMapper;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -96,5 +98,13 @@ public class ClienteService {
     public void delete(Long id) {
         log.debug("Request to delete Cliente : {}", id);
         clienteRepository.deleteById(id);
+    }
+
+    public Page<ClienteDTO> findAllWithFilter(Pageable pageable, ClienteDTO filtro) {
+        Example<Cliente> example = Example.of(
+            clienteMapper.toEntity(filtro),
+            ExampleMatcher.matchingAll().withIgnoreCase().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
+        );
+        return clienteRepository.findAll(example, pageable).map(clienteMapper::toDto);
     }
 }
