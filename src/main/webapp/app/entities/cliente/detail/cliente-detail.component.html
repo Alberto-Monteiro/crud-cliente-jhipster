@@ -16,7 +16,7 @@
         </dd>
         <dt><span ccTranslate="crudclienteApp.cliente.cpf">Cpf</span></dt>
         <dd>
-          <span>{{ cliente.cpf }}</span>
+          <span>{{ cliente.cpf | mask: '000.000.000-99' }}</span>
         </dd>
         <dt><span ccTranslate="crudclienteApp.cliente.nome">Nome</span></dt>
         <dd>
@@ -32,7 +32,7 @@
         </dd>
         <dt><span ccTranslate="crudclienteApp.cliente.telefone">Telefone</span></dt>
         <dd>
-          <span>{{ cliente.telefone }}</span>
+          <span>{{ cliente.telefone | mask: '(00) 00000-0000' }}</span>
         </dd>
         <dt><span ccTranslate="crudclienteApp.cliente.email">Email</span></dt>
         <dd>

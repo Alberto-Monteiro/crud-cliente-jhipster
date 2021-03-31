@@ -4,11 +4,11 @@ import { Sexo } from 'app/entities/enumerations/sexo.model';
 
 export interface ICliente {
   id?: number;
-  cpf?: string;
+  cpf?: string | any;
   nome?: string;
   sobrenome?: string;
   dataNascimento?: dayjs.Dayjs;
-  telefone?: string;
+  telefone?: string | any;
   email?: string;
   sexo?: Sexo;
   enderecos?: IEndEndereco[] | null;
@@ -17,11 +17,11 @@ export interface ICliente {
 export class Cliente implements ICliente {
   constructor(
     public id?: number,
-    public cpf?: string,
+    public cpf?: string | any,
     public nome?: string,
     public sobrenome?: string,
     public dataNascimento?: dayjs.Dayjs,
-    public telefone?: string,
+    public telefone?: string | any,
     public email?: string,
     public sexo?: Sexo,
     public enderecos?: IEndEndereco[] | null

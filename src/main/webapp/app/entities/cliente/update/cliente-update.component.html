@@ -15,7 +15,7 @@
 
         <div class="form-group">
           <label class="form-control-label" ccTranslate="crudclienteApp.cliente.cpf" for="field_cpf">Cpf</label>
-          <input type="text" class="form-control" name="cpf" id="field_cpf" data-cy="cpf" formControlName="cpf" />
+          <input type="text" class="form-control" name="cpf" id="field_cpf" data-cy="cpf" formControlName="cpf" mask="000.000.000-99" />
           <div *ngIf="editForm.get('cpf')!.invalid && (editForm.get('cpf')!.dirty || editForm.get('cpf')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('cpf')?.errors?.required" ccTranslate="entity.validation.required">
               This field is required.
@@ -117,7 +117,15 @@
 
         <div class="form-group">
           <label class="form-control-label" ccTranslate="crudclienteApp.cliente.telefone" for="field_telefone">Telefone</label>
-          <input type="text" class="form-control" name="telefone" id="field_telefone" data-cy="telefone" formControlName="telefone" />
+          <input
+            type="text"
+            class="form-control"
+            name="telefone"
+            id="field_telefone"
+            data-cy="telefone"
+            formControlName="telefone"
+            mask="(00) 00000-0000"
+          />
           <div *ngIf="editForm.get('telefone')!.invalid && (editForm.get('telefone')!.dirty || editForm.get('telefone')!.touched)">
             <small
               class="form-text text-danger"
