@@ -47,7 +47,7 @@ describe('Component Tests', () => {
       service = TestBed.inject(ClienteService);
 
       const headers = new HttpHeaders().append('link', 'link;link');
-      spyOn(service, 'query').and.returnValue(
+      spyOn(service, 'queryComFiltro').and.returnValue(
         of(
           new HttpResponse({
             body: [{ id: 123 }],
@@ -62,7 +62,7 @@ describe('Component Tests', () => {
       comp.ngOnInit();
 
       // THEN
-      expect(service.query).toHaveBeenCalled();
+      expect(service.queryComFiltro).toHaveBeenCalled();
       expect(comp.clientes?.[0]).toEqual(jasmine.objectContaining({ id: 123 }));
     });
 
@@ -71,7 +71,7 @@ describe('Component Tests', () => {
       comp.loadPage(1);
 
       // THEN
-      expect(service.query).toHaveBeenCalled();
+      expect(service.queryComFiltro).toHaveBeenCalled();
       expect(comp.clientes?.[0]).toEqual(jasmine.objectContaining({ id: 123 }));
     });
 
@@ -80,7 +80,7 @@ describe('Component Tests', () => {
       comp.ngOnInit();
 
       // THEN
-      expect(service.query).toHaveBeenCalledWith(expect.objectContaining({ sort: ['id,desc'] }));
+      expect(service.queryComFiltro).toHaveBeenCalledWith(expect.objectContaining({ sort: ['id,desc'] }), expect.objectContaining({}));
     });
 
     it('should calculate the sort attribute for a non-id attribute', () => {
@@ -94,7 +94,10 @@ describe('Component Tests', () => {
       comp.loadPage(1);
 
       // THEN
-      expect(service.query).toHaveBeenLastCalledWith(expect.objectContaining({ sort: ['name,desc', 'id'] }));
+      expect(service.queryComFiltro).toHaveBeenLastCalledWith(
+        expect.objectContaining({ sort: ['name,desc', 'id'] }),
+        expect.objectContaining({})
+      );
     });
   });
 });
