@@ -5,7 +5,7 @@ aprimorado a API Rest. [https://albertomonteiro.dev/](https://albertomonteiro.de
 
 ## Tecnologia usada
 
-- Java
+- Java 11
 - Angular 11
 - Spring Boot
 - Spring Security
