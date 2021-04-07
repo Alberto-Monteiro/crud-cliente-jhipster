@@ -26,7 +26,7 @@
     "packageFolder": "br/com/rocksti/crudcliente",
     "nativeLanguage": "pt-br",
     "applicationType": "monolith",
-    "jhipsterVersion": "7.0.0",
+    "jhipsterVersion": "7.0.1",
     "skipServer": false,
     "clientPackageManager": "npm",
     "dtoSuffix": "DTO",
