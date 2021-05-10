@@ -1,7 +1,7 @@
 # Bem vindo ao projeto de teste do CRUD do cliente
 
 Esse sistema é um monólito que tem um CRUD simples da entidade Cliente. Ele foi desenvolvido usando um arquétipo do JHipster e
-aprimorado a API Rest. [https://albertomonteiro.dev/](https://albertomonteiro.dev/)<br> Você pode logar como admin admin ou user user
+aprimorado a API Rest. [https://crudcliente.albertomonteiro.dev/](https://crudcliente.albertomonteiro.dev/)<br> Você pode logar como admin admin ou user user
 
 ## Tecnologia usada
 
@@ -30,7 +30,7 @@ A partir dessa modelagem o sistema foi feito.
 
 A estrutura das tabelas se encontram em [crud-cliente-jhipster/src/main/resources/config/liquibase/changelog/](https://github.com/Alberto-Monteiro/crud-cliente-jhipster/tree/master/src/main/resources/config/liquibase/changelog) baseado em liquibase
 
-A API Rest possui uma documentação feita em Swagger que pode ser consultada em [https://albertomonteiro.dev/docs](https://albertomonteiro.dev/docs). Para explorar o Swagger você pode configurar o tokem:<br> bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTYxOTg0NzUxMn0.O5aV*YFXtawLf2u55fdMS-jxkpdBZovt5QF1SPZ9bPNNJGVA7GKICCrzvjRU0j-bp8_QceeEru*-A6VrxJAJaQ
+A API Rest possui uma documentação feita em Swagger que pode ser consultada em [https://crudcliente.albertomonteiro.dev/docs](https://crudcliente.albertomonteiro.dev/docs). Para explorar o Swagger você pode configurar o tokem:<br> bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTYxOTg0NzUxMn0.O5aV*YFXtawLf2u55fdMS-jxkpdBZovt5QF1SPZ9bPNNJGVA7GKICCrzvjRU0j-bp8_QceeEru*-A6VrxJAJaQ
 
 Também tem a documentação em Postman [https://documenter.getpostman.com/view/15195822/TzCP5mJB](https://documenter.getpostman.com/view/15195822/TzCP5mJB)<br>
 E o arquivo exportado pelo Postman [https://www.postman.com/collections/2788deaf95a50f000ea7](https://www.postman.com/collections/2788deaf95a50f000ea7)
@@ -49,7 +49,7 @@ O sistema está rodando em produção em uma maquina virtual no Google Cloud Pla
 
 Essa imagem Docker está disponível no meu repositório publico do DockerHub [rocksdf/crudcliente:latest](https://hub.docker.com/r/rocksdf/crudcliente)
 
-Através do proxy traefik eu disponibilizei o link [https://albertomonteiro.dev/](https://albertomonteiro.dev/) com o certificado da Let's Encrypt, sempre é redirecionado para o Https.
+Através do proxy traefik eu disponibilizei o link [https://crudcliente.albertomonteiro.dev/](https://crudcliente.albertomonteiro.dev/) com o certificado da Let's Encrypt, sempre é redirecionado para o Https.
 
 O arquivo do docker-compose que está em produção é esse:
 
@@ -143,14 +143,14 @@ services:
     container_name: crudcliente-app
     image: rocksdf/crudcliente
     labels:
-      - traefik.http.routers.crudcliente-http.rule=Host(`albertomonteiro.dev`)
+      - traefik.http.routers.crudcliente-http.rule=Host(`crudcliente.albertomonteiro.dev`)
       - traefik.http.routers.crudcliente-http.entrypoints=web
       - traefik.http.routers.crudcliente-http.tls=false
       - traefik.http.routers.crudcliente-http.middlewares=https_redirect
       - traefik.http.middlewares.https_redirect.redirectscheme.permanent=true
       - traefik.http.middlewares.https_redirect.redirectscheme.scheme=https
 
-      - traefik.http.routers.crudcliente-https.rule=Host(`albertomonteiro.dev`)
+      - traefik.http.routers.crudcliente-https.rule=Host(`crudcliente.albertomonteiro.dev`)
       - traefik.http.routers.crudcliente-https.entrypoints=websecure
       - traefik.http.routers.crudcliente-https.tls.certresolver=leresolver
 
@@ -171,8 +171,8 @@ services:
       - SPRING_MAIL_PORT=587
       - SPRING_MAIL_USERNAME=apikey
       - SPRING_MAIL_PASSWORD=******
-      - JHIPSTER_MAIL_FROM=suporte@albertomonteiro.dev
-      - JHIPSTER_MAIL_BASEURL=https://albertomonteiro.dev
+      - JHIPSTER_MAIL_FROM=suporte@crudcliente.albertomonteiro.dev
+      - JHIPSTER_MAIL_BASEURL=https://crudcliente.albertomonteiro.dev
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=false
       - JHIPSTER_SLEEP=30
     restart: always
