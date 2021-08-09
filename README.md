@@ -25,7 +25,7 @@ aprimorado a API Rest. [https://crudcliente.albertomonteiro.dev/](https://crudcl
 
 ## Como foi desenvolvido
 
-![](https://raw.githubusercontent.com/Alberto-Monteiro/repositorio-imagens/main/crudcliente/Captura%20de%20tela%202021-04-01%20115012.png)<br>
+![](docs/Captura%20de%20tela%202021-04-01%20115012.png)<br>
 A partir dessa modelagem o sistema foi feito.
 
 A estrutura das tabelas se encontram em [crud-cliente-jhipster/src/main/resources/config/liquibase/changelog/](https://github.com/Alberto-Monteiro/crud-cliente-jhipster/tree/master/src/main/resources/config/liquibase/changelog) baseado em liquibase
